@@ -1069,6 +1069,52 @@
 		)
 	)
 	(sheet
+		(at 217.17 102.87)
+		(size 19.05 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e1bddd6c-d34d-4e94-beb4-59b1ee5fe9dd")
+		(property "Sheetname" "IMU"
+			(at 217.17 102.1584 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "imu.kicad_sch"
+			(at 217.17 118.6946 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "gnss_node"
+				(path "/eb6e66b6-2df0-4872-8f92-4c510b34f8fe"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
 		(at 160.02 102.87)
 		(size 20.32 15.24)
 		(exclude_from_sim no)
