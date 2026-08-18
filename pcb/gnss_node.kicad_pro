@@ -60,7 +60,7 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 1.0,
+          "min_clearance": 0.6,
           "min_island_area": 10.0,
           "min_thickness": 0.1,
           "pad_connection": 2,
@@ -76,12 +76,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "silk_over_copper|167410000|76855000|9cd6c9c7-e493-40c8-a76b-b5655fc1c095|e948e97d-c711-4990-9de5-fb384d0c88f4",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -914,7 +909,7 @@
         "uuid": "eb6e66b6-2df0-4872-8f92-4c510b34f8fe"
       }
     ],
-    "used_designators": "J1-6,#FLG1-6,R1-42,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-53,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-6,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1",
+    "used_designators": "J1-6,#FLG1-11,R1-42,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-53,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-6,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1",
     "variants": []
   },
   "sheets": [
