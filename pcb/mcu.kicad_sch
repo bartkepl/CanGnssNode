@@ -3023,20 +3023,12 @@
 		(uuid "f8cd4796-9027-492e-8d53-945a5502c1b7")
 	)
 	(no_connect
-		(at 135.89 96.52)
-		(uuid "5530394b-d0a9-4008-abe4-82ecc87c39a2")
-	)
-	(no_connect
 		(at 161.29 88.9)
 		(uuid "6c3491c2-5606-4cc2-9a7d-9c8c2c5f1145")
 	)
 	(no_connect
 		(at 135.89 88.9)
 		(uuid "74b8f531-45bb-45d7-b5e9-86cb645ab2d2")
-	)
-	(no_connect
-		(at 135.89 93.98)
-		(uuid "ac8490ee-559c-4279-ac2b-9f9a64735413")
 	)
 	(no_connect
 		(at 161.29 68.58)
@@ -4062,6 +4054,16 @@
 	)
 	(wire
 		(pts
+			(xy 129.54 93.98) (xy 135.89 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e00ba98e-d65d-4a0f-8b13-5b0d79788497")
+	)
+	(wire
+		(pts
 			(xy 132.08 113.03) (xy 132.08 114.3)
 		)
 		(stroke
@@ -4219,6 +4221,16 @@
 			(type default)
 		)
 		(uuid "f76ee6b2-dc7b-4883-84a0-0145f43e6555")
+	)
+	(wire
+		(pts
+			(xy 129.54 96.52) (xy 135.89 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8aef067-6afa-4ee8-96e6-8c61557ec625")
 	)
 	(wire
 		(pts
@@ -4469,6 +4481,17 @@
 		)
 		(uuid "6110753f-5cd3-4957-a058-87665b91d4f2")
 	)
+	(hierarchical_label "IMU_INT"
+		(shape input)
+		(at 129.54 96.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6e7ad344-1b0f-4d1f-a3af-38b1a3be7bdd")
+	)
 	(hierarchical_label "V_BCKP"
 		(shape input)
 		(at 52.07 114.3 180)
@@ -4490,6 +4513,17 @@
 			(justify left)
 		)
 		(uuid "7ea74d22-190a-4afa-8243-623c2e8f901e")
+	)
+	(hierarchical_label "IMU_EN"
+		(shape output)
+		(at 129.54 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8330240c-7303-44f6-b590-db3560d2f228")
 	)
 	(hierarchical_label "EN_I_SENS"
 		(shape output)

@@ -68,32 +68,6 @@ Podczas montażu/lutowania pinu `RF_IN`: najpierw podłącz GND, potem RF_IN; u�
 - [ ] Usunąć netclass `HV_lines` i jej pattern `/HV/HV+*` w `gnss_node.kicad_pro` (sekcja `net_settings`).
 - [ ] Zaktualizować obrys płytki pod nowy, mniejszy kształt dwustronny.
 
-## 4. Self-reset po CAN (power-cycle całej płytki)
-
-Cel: komenda CAN ma wywoływać pełny power-cycle płytki (MCU, moduł GPS, transceiver CAN), nie tylko `NVIC_SystemReset()` — software reset nie zabiera zasilania niczemu poza rdzeniem STM32 i nie pomoże przy zawieszeniu np. modułu GPS. MCU nie może zrobić tego sam sobie (traci zasilanie w momencie odcięcia), więc potrzebny jest mały, zawsze-żywy obwód sprzętowy, który odmierza czas wyłączenia i sam z powrotem załącza zasilanie. **Ten sam obwód (bo ten sam LT8606 w `pwr.kicad_sch`) przenosi się 1:1 do CanGeigerProbe.**
-
-### Punkt odcięcia: EN/UVLO LT8606, nie surowe Vin
-
-Nie przełączaj całego Vin (7–42 V, duży prąd) — LT8606 ma już dzielnik rezystorowy na pinie EN/UVLO. Wystarczy ściągnąć ten pin do masy, żeby wymusić shutdown regulatora (Iq w shutdown jeszcze niższy niż standardowe 2.5 µA Burst Mode) — **+5V znika, a z nim +3.3V** (MCP1700 wisi na wyjściu LT8606), czyli MCU/GPS/CAN tracą zasilanie. RTC (MCP79410) przeżywa dzięki `BT1` — pożądane, zegar nie gubi czasu.
-
-- [ ] **Q3 — BSS138** (N-MOSFET, już 3. użycie tego samego part number w BOM — jak w terminacji CAN i w `ANTON`) — bramka równolegle do **dolnego rezystora istniejącego dzielnika UVLO** na pinie EN LT8606. Załączony = ciągnie EN twardo do masy niezależnie od Vin. Wyłączony = dzielnik pracuje jak dziś, zero wpływu na normalny UVLO.
-
-### Monostabil — bez osobnego obwodu zasilania
-
-Sekwencer musi zostać żywy, gdy reszta płytki umiera, żeby po ~100 ms zwolnić EN z powrotem. Zamiast osobnego regulatora HV (niepotrzebne, przy 100 ms wystarczy lokalny kondensator podtrzymujący):
-
-- [ ] **U? — NC7SZ14 / 74LVC1G14** (pojedyncza bramka Schmitta, SOT-23-5, pobór spoczynkowy rzędu µA).
-- [ ] **Zasilanie bramki: +3.3V → dioda izolująca (BAT54 lub 1N4148) → C 2.2 µF (holdup) → VCC bramki.** Dioda blokuje rozładowanie kondensatora z powrotem w zapadającą szynę +3.3V, gdy EN ściągnie zasilanie. Rachunek: bramka ~5 µA × 100 ms = 0.5 µC, przy dopuszczalnym spadku ~1V → C≈0.5µF minimum; 2.2 µF daje zapas (pokrywa też pobór chwilowy przy przełączaniu bramki Q3).
-- [ ] **RC na wejściu triggera bramki** ustawiające czas przytrzymania EN w stanie niskim — dobierz na **~100 ms** (start). Wejście trigera zasilane impulsem z GPIO MCU przez diodę (żeby nie obciążać RC).
-- [ ] Wyjście bramki → bramka Q3 (BSS138) → EN LT8606 (jak wyżej).
-
-### Firmware
-- [ ] Po odebraniu komendy CAN "reboot": MCU pulsuje **jeden wolny GPIO (np. PA4)** ~20–50 ms w wejście triggera monostabilu i kończy — reszta dzieje się sprzętowo/autonomicznie, MCU zaraz traci zasilanie.
-
-### Do zweryfikowania przy bring-upie
-- [ ] Oscyloskopem sprawdzić, czy 100 ms rzeczywiście wystarcza, żeby +3.3V/+5V spadło poniżej progu POR wszystkich układów (STM32, ATA6561, L76-L) i wróciło czysto. Jeśli za krótko — zwiększ kondensator/rezystor **timingowego RC** (nie holdup C).
-- [ ] Sprawdzić próg EN/UVLO LT8606 w jego datasheecie (rząd ~1.2V) i upewnić się, że Q3 w stanie ON ściąga węzeł wyraźnie poniżej tego progu przy każdym Vin z zakresu roboczego.
-
 ## 5. Sanity check na koniec
 
 `grep -ri "geiger\|CanGeigerProbe\|sonda G-M\|flyback"` w całym repo poza tym plikiem (gdzie nazwa starego projektu musi paść dla kontekstu) — zero trafień.

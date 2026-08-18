@@ -76,7 +76,12 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "silk_over_copper|167410000|76855000|9cd6c9c7-e493-40c8-a76b-b5655fc1c095|e948e97d-c711-4990-9de5-fb384d0c88f4",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -107,7 +112,7 @@
         "items_not_allowed": "error",
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
-        "lib_footprint_mismatch": "warning",
+        "lib_footprint_mismatch": "ignore",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "mirrored_text_on_front_layer": "warning",
@@ -216,6 +221,7 @@
         0.2,
         0.25,
         0.3,
+        0.370849,
         0.4,
         0.5,
         0.6,
@@ -908,7 +914,7 @@
         "uuid": "eb6e66b6-2df0-4872-8f92-4c510b34f8fe"
       }
     ],
-    "used_designators": "J1-6,#FLG1-6,R1-39,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-52,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-4,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1",
+    "used_designators": "J1-6,#FLG1-6,R1-42,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-53,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-6,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1",
     "variants": []
   },
   "sheets": [
