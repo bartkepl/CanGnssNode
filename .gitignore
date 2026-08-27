@@ -45,3 +45,6 @@ pcb/ibom.config.ini
 
 # Dokumentacja projektowa - lokalna, nie publikowana
 plan/
+
+# Loose gerbers - only the zipped set in prod/*.zip is tracked
+prod/gerbers/
