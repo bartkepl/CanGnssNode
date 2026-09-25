@@ -665,19 +665,6 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "clearance": 1.0,
-        "diff_pair_gap": 0.25,
-        "diff_pair_width": 0.25,
-        "name": "HV_lines",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -689,10 +676,6 @@
       {
         "netclass": "Default",
         "pattern": ""
-      },
-      {
-        "netclass": "HV_lines",
-        "pattern": "/HV/HV+*"
       }
     ]
   },
@@ -1044,7 +1027,7 @@
         "uuid": "eb6e66b6-2df0-4872-8f92-4c510b34f8fe"
       }
     ],
-    "used_designators": "J1-6,#FLG1-11,R1-42,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-53,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-6,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1",
+    "used_designators": "J1-6,#FLG1-11,R1-42,R46-50,IC1-2,IC4,IC8,L1-2,#PWR1-53,#PWR67,#PWR69,#PWR88-97,C1-62,U1-6,U701-702,Q1-6,D1-10,D27,L1.4-5,GD1-2,F1-3,FB1-7,FB13,FL1,BT1-2,Y1,TP9-10,ANODE1-2,CATHODE1,FID1-4",
     "variants": []
   },
   "sheets": [
