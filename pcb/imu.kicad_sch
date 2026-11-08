@@ -3917,6 +3917,42 @@
 				)
 			)
 		)
+		(property "MPN" "BSS84-7-F"
+			(at 226.06 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Manufacturer" "DIODES INCORPORATED"
+			(at 226.06 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "TME" "BSS84-7-F"
+			(at 226.06 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(pin "1"
 			(uuid "7353c3cf-0be2-42ba-87f7-e3bdaccc0a47")
 		)
@@ -4068,6 +4104,39 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 143.51 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RMS06FT1002"
+			(at 143.51 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TA-I Tech"
+			(at 143.51 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C209013"
 			(at 143.51 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -4631,6 +4700,39 @@
 				)
 			)
 		)
+		(property "MPN" "RMS06FT1002"
+			(at 147.32 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TA-I Tech"
+			(at 147.32 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C209013"
+			(at 147.32 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7730dca3-e1ef-4f04-ac21-ef7c62060d8c")
 		)
@@ -4791,6 +4893,39 @@
 				)
 			)
 		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 143.51 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 143.51 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
+			(at 143.51 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "412a8f5c-5ff2-4327-824f-93597558721b")
 		)
@@ -4873,18 +5008,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MF" "STMicroelectronics"
-			(at 118.11 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "1.0mm"
 			(at 118.11 124.46 0)
 			(hide yes)
@@ -4898,30 +5021,6 @@
 			)
 		)
 		(property "Package" "VFLGA-12 STMicroelectronics"
-			(at 118.11 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Price" "None"
-			(at 118.11 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/LSM303AGR/STMicroelectronics/view-part/?ref=eda"
 			(at 118.11 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -4957,7 +5056,7 @@
 				(justify bottom)
 			)
 		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/LSM303AGR/STMicroelectronics/view-part/?ref=snap"
+		(property "MPN" "LSM303AGR"
 			(at 118.11 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -4966,10 +5065,9 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
 			)
 		)
-		(property "MP" "LSM303AGR"
+		(property "Manufacturer" "STMicroelectronics"
 			(at 118.11 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -4978,31 +5076,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 118.11 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "MANUFACTURER" "STMicroelectronics"
-			(at 118.11 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
 			)
 		)
 		(pin "11"
@@ -5117,30 +5190,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MF" "NXP USA"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "SNAPEDA_PACKAGE_ID" "72817"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "CREATOR" "NEZY"
 			(at 115.57 60.96 0)
 			(hide yes)
@@ -5166,18 +5215,6 @@
 			)
 		)
 		(property "Package" "QFN-16 NXP USA"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/FXOS8700CQR1/NXP+Semiconductors/view-part/?ref=eda"
 			(at 115.57 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -5225,55 +5262,7 @@
 				(justify bottom)
 			)
 		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/FXOS8700CQR1/NXP+Semiconductors/view-part/?ref=snap"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "MP" "FXOS8700CQR1"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "1.25 mm"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 115.57 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Price" "None"
 			(at 115.57 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -5297,7 +5286,7 @@
 				(justify bottom)
 			)
 		)
-		(property "MANUFACTURER" "NXP USA"
+		(property "MPN" "FXOS8700CQR1"
 			(at 115.57 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -5306,7 +5295,17 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
+			)
+		)
+		(property "Manufacturer" "NXP USA"
+			(at 115.57 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "15"
@@ -5517,8 +5516,8 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "BSS138"
-			(at 224.79 77.47 0)
+		(property "MPN" "BSS138"
+			(at 219.71 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5526,6 +5525,43 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
+			)
+		)
+		(property "Manufacturer" "Shikues"
+			(at 219.71 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C112239"
+			(at 219.71 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "TME" "BSS138-ONS"
+			(at 219.71 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(pin "1"
@@ -5691,28 +5727,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 232.41 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 232.41 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 232.41 82.55 0)
 			(hide yes)
@@ -5724,7 +5738,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RC0603FR-07100KL"
 			(at 232.41 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -5735,7 +5749,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "YAGEO"
 			(at 232.41 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -5746,7 +5760,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
+		(property "LCSC" "C14675"
 			(at 232.41 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -5757,7 +5771,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" ""
+		(property "TME" "RC0603FR-07100K"
 			(at 232.41 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -5872,7 +5886,29 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "WLBD1608HCU101TL"
+		(property "MPN" "MH1608-101Y"
+			(at 154.94 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOURNS"
+			(at 154.94 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "MH1608-101Y"
 			(at 154.94 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -6032,6 +6068,39 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 166.37 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 166.37 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 166.37 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
 			(at 166.37 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -6284,28 +6353,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 231.14 64.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 231.14 64.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 231.14 64.77 0)
 			(hide yes)
@@ -6317,7 +6364,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RC0603FR-07100KL"
 			(at 231.14 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -6328,7 +6375,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "YAGEO"
 			(at 231.14 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -6339,7 +6386,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
+		(property "LCSC" "C14675"
 			(at 231.14 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -6350,7 +6397,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" ""
+		(property "TME" "RC0603FR-07100K"
 			(at 231.14 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -6547,7 +6594,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "WLBD1608HCU101TL"
+		(property "MPN" "WLBD1608HCU101TL"
 			(at 154.94 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -6798,28 +6845,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 209.55 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 209.55 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 209.55 74.93 0)
 			(hide yes)
@@ -6831,7 +6856,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RC0603FR-07100KL"
 			(at 209.55 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -6842,7 +6867,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "YAGEO"
 			(at 209.55 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -6853,7 +6878,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
+		(property "LCSC" "C14675"
 			(at 209.55 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -6864,7 +6889,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" ""
+		(property "TME" "RC0603FR-07100K"
 			(at 209.55 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -7025,6 +7050,39 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 172.72 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0603X105K500NT"
+			(at 172.72 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "FH"
+			(at 172.72 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C157684"
 			(at 172.72 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -7273,6 +7331,39 @@
 				)
 			)
 		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 154.94 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 154.94 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
+			(at 154.94 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4947a53c-db68-4f5d-b826-50204a1a2441")
 		)
@@ -7344,6 +7435,39 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 140.97 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 140.97 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 140.97 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
 			(at 140.97 73.66 0)
 			(hide yes)
 			(show_name no)

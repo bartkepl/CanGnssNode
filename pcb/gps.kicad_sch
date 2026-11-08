@@ -4154,6 +4154,50 @@
 				)
 			)
 		)
+		(property "MPN" "0603N101J500CT"
+			(at 198.12 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Walsin"
+			(at 198.12 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C335544"
+			(at 198.12 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "0603N101J500CT"
+			(at 198.12 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6d443566-e0a3-4ac2-b647-cd724eaa4bb3")
 		)
@@ -4236,18 +4280,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MF" "Quectel"
-			(at 130.81 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "Package" "Custom Quectel"
 			(at 130.81 91.44 0)
 			(hide yes)
@@ -4260,7 +4292,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Price" "None"
+		(property "MPN" "L76L-M33"
 			(at 130.81 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4269,10 +4301,9 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
 			)
 		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/L76L-M33/Quectel/view-part/?ref=snap"
+		(property "Manufacturer" "Quectel"
 			(at 130.81 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4281,43 +4312,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
-			)
-		)
-		(property "MP" "L76L-M33"
-			(at 130.81 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 130.81 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/L76L-M33/Quectel/view-part/?ref=eda"
-			(at 130.81 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
 			)
 		)
 		(pin "4"
@@ -4516,6 +4510,39 @@
 				)
 			)
 		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 226.06 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 226.06 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
+			(at 226.06 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "22e7294d-cd8a-4947-afa2-fa33f629fa6f")
 		)
@@ -4599,6 +4626,42 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "MPN" "BC847B,215"
+			(at 104.14 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Manufacturer" "NEXPERIA"
+			(at 104.14 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "TME" "BC847B.215"
+			(at 104.14 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(pin "2"
@@ -4765,6 +4828,42 @@
 				)
 			)
 		)
+		(property "MPN" "BSS84-7-F"
+			(at 195.58 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Manufacturer" "DIODES INCORPORATED"
+			(at 195.58 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "TME" "BSS84-7-F"
+			(at 195.58 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(pin "1"
 			(uuid "6cfc0c51-d159-4d6c-a387-d44504df92ab")
 		)
@@ -4849,28 +4948,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 190.5 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 190.5 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 190.5 86.36 0)
 			(hide yes)
@@ -4882,7 +4959,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RMS06FT1002"
 			(at 190.5 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -4893,7 +4970,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "TA-I Tech"
 			(at 190.5 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -4904,18 +4981,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
-			(at 190.5 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SnapEDA_Link" ""
+		(property "LCSC" "C209013"
 			(at 190.5 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -5008,6 +5074,39 @@
 				)
 			)
 		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "75648d23-4ffe-4926-ab87-d003af44bce9")
 		)
@@ -5090,28 +5189,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 165.1 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 165.1 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 165.1 99.06 0)
 			(hide yes)
@@ -5123,7 +5200,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RMS06FT1001"
 			(at 165.1 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -5134,7 +5211,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "TA-I Tech"
 			(at 165.1 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -5145,18 +5222,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
-			(at 165.1 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SnapEDA_Link" ""
+		(property "LCSC" "C209012"
 			(at 165.1 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -5249,28 +5315,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 213.36 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 213.36 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 213.36 81.28 0)
 			(hide yes)
@@ -5282,7 +5326,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "0603WAF100JT5E"
 			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -5293,7 +5337,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "UNI-ROYAL"
 			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -5304,7 +5348,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
+		(property "LCSC" "C22859"
 			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -5315,7 +5359,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" ""
+		(property "TME" "0603WAF100JT5E"
 			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -5510,7 +5554,29 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "WLBD1608HCU101TL"
+		(property "MPN" "MH1608-101Y"
+			(at 205.74 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOURNS"
+			(at 205.74 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "MH1608-101Y"
 			(at 205.74 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -5758,28 +5824,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 165.1 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 165.1 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 165.1 96.52 0)
 			(hide yes)
@@ -5791,7 +5835,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RMS06FT1001"
 			(at 165.1 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -5802,7 +5846,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "TA-I Tech"
 			(at 165.1 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -5813,18 +5857,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
-			(at 165.1 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SnapEDA_Link" ""
+		(property "LCSC" "C209012"
 			(at 165.1 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -5939,7 +5972,29 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "WLBD1608HCU101TL"
+		(property "MPN" "MH1608-101Y"
+			(at 153.67 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOURNS"
+			(at 153.67 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "MH1608-101Y"
 			(at 153.67 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -6032,6 +6087,39 @@
 				)
 			)
 		)
+		(property "MPN" "0603X105K500NT"
+			(at 187.96 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "FH"
+			(at 187.96 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C157684"
+			(at 187.96 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "46015be9-83fc-4fbe-b729-82a8eec91e48")
 		)
@@ -6102,6 +6190,39 @@
 			)
 		)
 		(property "Description" "LQW18AN47NJ00D"
+			(at 80.01 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LQW18AN47NG00D"
+			(at 80.01 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "MURATA"
+			(at 80.01 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "LQW18AN47NG00D"
 			(at 80.01 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -6193,28 +6314,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 91.44 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 91.44 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 91.44 110.49 0)
 			(hide yes)
@@ -6226,7 +6325,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "CR0603F5K60P05Z"
 			(at 91.44 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -6237,7 +6336,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "EVER OHMS"
 			(at 91.44 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -6248,18 +6347,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
-			(at 91.44 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SnapEDA_Link" ""
+		(property "LCSC" "C881348"
 			(at 91.44 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -6428,28 +6516,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 97.79 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 97.79 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 97.79 116.84 0)
 			(hide yes)
@@ -6461,7 +6527,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "RC0603FR-07100KL"
 			(at 97.79 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -6472,7 +6538,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "YAGEO"
 			(at 97.79 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -6483,7 +6549,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
+		(property "LCSC" "C14675"
 			(at 97.79 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -6494,7 +6560,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" ""
+		(property "TME" "RC0603FR-07100K"
 			(at 97.79 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -6750,8 +6816,8 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "BSS138"
-			(at 196.85 99.06 0)
+		(property "MPN" "BSS138"
+			(at 201.93 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6759,6 +6825,43 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
+			)
+		)
+		(property "Manufacturer" "Shikues"
+			(at 201.93 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C112239"
+			(at 201.93 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "TME" "BSS138-ONS"
+			(at 201.93 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(pin "1"
@@ -6835,6 +6938,50 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 172.72 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0603N101J500CT"
+			(at 172.72 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Walsin"
+			(at 172.72 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C335544"
+			(at 172.72 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "0603N101J500CT"
 			(at 172.72 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -6926,28 +7073,6 @@
 				)
 			)
 		)
-		(property "Availability" ""
-			(at 160.02 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Check_prices" ""
-			(at 160.02 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Description_1" ""
 			(at 160.02 104.14 0)
 			(hide yes)
@@ -6959,7 +7084,7 @@
 				)
 			)
 		)
-		(property "MF" ""
+		(property "MPN" "CR0603F5K60P05Z"
 			(at 160.02 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -6970,7 +7095,7 @@
 				)
 			)
 		)
-		(property "Price" ""
+		(property "Manufacturer" "EVER OHMS"
 			(at 160.02 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -6981,18 +7106,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" ""
-			(at 160.02 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SnapEDA_Link" ""
+		(property "LCSC" "C881348"
 			(at 160.02 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -7073,6 +7187,50 @@
 			)
 		)
 		(property "Description" "small coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 67.31 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "U.FL-R-SMT-1(80)"
+			(at 67.31 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HRS"
+			(at 67.31 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C88374"
+			(at 67.31 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "U.FL-R-SMT-1-80/C"
 			(at 67.31 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -7164,6 +7322,50 @@
 				)
 			)
 		)
+		(property "MPN" "0603N101J500CT"
+			(at 231.14 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Walsin"
+			(at 231.14 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C335544"
+			(at 231.14 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "0603N101J500CT"
+			(at 231.14 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "57d4986e-aaae-498e-915c-7def463bd522")
 		)
@@ -7234,6 +7436,39 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 96.52 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CR0402J0R00Q10Z"
+			(at 96.52 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "EVER OHMS"
+			(at 96.52 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C881153"
 			(at 96.52 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -7326,6 +7561,39 @@
 				)
 			)
 		)
+		(property "MPN" "TCC0603X7R104K500CT"
+			(at 156.21 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "CCTC"
+			(at 156.21 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C282519"
+			(at 156.21 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "33eb6a44-8058-4c34-80c1-d1c51f49badb")
 		)
@@ -7398,6 +7666,39 @@
 			)
 		)
 		(property "Description" "STN061033BL15-EA"
+			(at 72.39 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "STN061033BL15"
+			(at 72.39 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "EATON ELECTRONICS"
+			(at 72.39 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "TME" "STN061033BL15-EA"
 			(at 72.39 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -7636,6 +7937,39 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 162.56 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0603X105K500NT"
+			(at 162.56 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "FH"
+			(at 162.56 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C157684"
 			(at 162.56 64.77 0)
 			(hide yes)
 			(show_name no)
