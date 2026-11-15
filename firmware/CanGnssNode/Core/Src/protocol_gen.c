@@ -40,7 +40,7 @@ const mpc_param_desc_t mpc_param_table[MPC_PARAM_COUNT] = {
   { MPC_PARAM_CAL_MAG_OFF_X, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, -1007026176, 1140457472, 0 },  /* Offset hard-iron magnetometru, os X wezla. */
   { MPC_PARAM_CAL_MAG_OFF_Y, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, -1007026176, 1140457472, 0 },  /* Offset hard-iron magnetometru, os Y wezla. */
   { MPC_PARAM_CAL_MAG_OFF_Z, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, -1007026176, 1140457472, 0 },  /* Offset hard-iron magnetometru, os Z wezla. */
-  { MPC_PARAM_CAL_MOUNT_ORIENT, MPC_PTYPE_U8, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, 0, 23, 0 },  /* Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st przeksztalcajacy osie czujnika na osie wezla (tablica w ADR 0004). */
+  { MPC_PARAM_CAL_MOUNT_ORIENT, MPC_PTYPE_U8, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, 0, 23, 0 },  /* Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st przeksztalcajacy osie czujnika na osie wezla (definicja w ADR 0004). */
   { MPC_PARAM_CAL_VIN_C0, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, -1082130432, 1065353216, 0 },  /* Napiecie zasilania: offset c0 (V = c1 * V_nom + c0). */
   { MPC_PARAM_CAL_VIN_C1, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, 1056964608, 1069547520, 1065353216 },  /* Napiecie zasilania: wzmocnienie c1 wzgledem nominalnego dzielnika 1M/100k. */
   { MPC_PARAM_CAL_ISENS_C0, MPC_PTYPE_F32, MPC_ACC_RW, MPC_STORE_NV, MPC_PFLAG_CALIBRATION, -1165815185, 981668463, 0 },  /* Prad zasilania: offset c0 (I = c1 * I_nom + c0). */

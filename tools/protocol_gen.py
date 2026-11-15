@@ -582,7 +582,7 @@ PARAMS: list[ParamDesc] = [
     ParamDesc(0x30, 'CAL_MAG_OFF_X', 'f32', 'rw', 'nv', -500.0, 500.0, 0.0, 'uT', True, 'Offset hard-iron magnetometru, os X wezla.'),
     ParamDesc(0x31, 'CAL_MAG_OFF_Y', 'f32', 'rw', 'nv', -500.0, 500.0, 0.0, 'uT', True, 'Offset hard-iron magnetometru, os Y wezla.'),
     ParamDesc(0x32, 'CAL_MAG_OFF_Z', 'f32', 'rw', 'nv', -500.0, 500.0, 0.0, 'uT', True, 'Offset hard-iron magnetometru, os Z wezla.'),
-    ParamDesc(0x33, 'CAL_MOUNT_ORIENT', 'u8', 'rw', 'nv', 0, 23, 0, '-', True, 'Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st przeksztalcajacy osie czujnika na osie wezla (tablica w ADR 0004).'),
+    ParamDesc(0x33, 'CAL_MOUNT_ORIENT', 'u8', 'rw', 'nv', 0, 23, 0, '-', True, 'Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st przeksztalcajacy osie czujnika na osie wezla (definicja w ADR 0004).'),
     ParamDesc(0x34, 'CAL_VIN_C0', 'f32', 'rw', 'nv', -1.0, 1.0, 0.0, 'V', True, 'Napiecie zasilania: offset c0 (V = c1 * V_nom + c0).'),
     ParamDesc(0x35, 'CAL_VIN_C1', 'f32', 'rw', 'nv', 0.5, 1.5, 1.0, '-', True, 'Napiecie zasilania: wzmocnienie c1 wzgledem nominalnego dzielnika 1M/100k.'),
     ParamDesc(0x36, 'CAL_ISENS_C0', 'f32', 'rw', 'nv', -0.001, 0.001, 0.0, 'A', True, 'Prad zasilania: offset c0 (I = c1 * I_nom + c0).'),

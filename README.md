@@ -3,14 +3,14 @@
 
 Polowy węzeł pozycyjny z modułem GNSS **Quectel L76-L** (GPS/GLONASS/Galileo/QZSS) i czujnikiem orientacji (akcelerometr + magnetometr), komunikujący się cyfrowo przez **CAN 2.0B**. Zaprojektowany jako element rozproszonego systemu pomiarowego: wąski cylindryczny węzeł w obudowie aluminiowej, jedno złącze M12, odporność EMC klasy przemysłowej.
 
-![status](https://img.shields.io/badge/status-layout%20PCB%20gotowy-yellow)
+![status](https://img.shields.io/badge/status-PCB%20zam%C3%B3wione%2C%20firmware%20E0-yellow)
 ![hw](https://img.shields.io/badge/hardware-v1.0-blue)
 ![mcu](https://img.shields.io/badge/MCU-STM32L432KCU6-brightgreen)
 ![gnss](https://img.shields.io/badge/GNSS-Quectel%20L76--L-orange)
 ![bus](https://img.shields.io/badge/bus-CAN%202.0B-informational)
 ![pcb](https://img.shields.io/badge/PCB-4%20warstwy%2C%2076×30%20mm-lightgrey)
 
-> **Status:** schemat (6 arkuszy hierarchicznych) i layout PCB zakończone, pliki produkcyjne wygenerowane — przed zamówieniem prototypu. Ta sama filozofia konstrukcyjna co [CanGeigerProbe](https://github.com/bartkepl/CanGeigerProbe) (rura aluminiowa, złącze M12, zasilanie/CAN/RTC odziedziczone), sonda G-M i obwód HV zastąpione modułem GNSS i IMU. Firmware na etapie szkieletu bring-up.
+> **Status:** schemat (6 arkuszy hierarchicznych) i layout PCB zakończone, pliki produkcyjne wygenerowane, prototyp zamówiony (stan sprzętu: tag `hw-v1.0`). Ta sama filozofia konstrukcyjna co [CanGeigerProbe](https://github.com/bartkepl/CanGeigerProbe) (rura aluminiowa, złącze M12, zasilanie/CAN/RTC odziedziczone), sonda G-M i obwód HV zastąpione modułem GNSS i IMU. Firmware: etap E0 — specyfikacja protokołu i projekty CubeIDE; plan w [docs/PLAN.md](docs/PLAN.md).
 
 ---
 
@@ -32,7 +32,7 @@ Strona TOP: ochrona wejścia, zasilanie (LT8606 + MCP1700), CAN z przełączaln�
 
 - **Prosty odbiornik pozycji GNSS** — moduł Quectel L76-L (GPS + GLONASS + Galileo + QZSS, 33 kanały śledzenia), dane NMEA po UART, pozycja wysyłana cyklicznie na CAN.
 - **Czujnik orientacji** — FXOS8700CQ (6 osi: akcelerometr + magnetometr, I2C) z zasilaniem przełączanym z MCU; alternatywne pola pod LSM303AGR (domyślnie niemontowany).
-- **Zasilanie o niskim poborze własnym** — buck LT8606 (Iq 2.5 µA) i LDO MCP1700 (Iq 1.6 µA). Budżet mocy węzła jest jednak zdominowany przez odbiornik GNSS, który w akwizycji/śledzeniu pobiera o rzędy wielkości więcej niż reszta układu — realny pobór zależy od trybu pracy L76-L (Full On / Periodic / AlwaysLocate™ / Standby / Backup) wybranego w firmware i zostanie zmierzony przy bring-upie wbudowanym INA186.
+- **Zasilanie o niskim poborze własnym** — buck LT8606 (Iq 2.5 µA) i LDO MCP1700 (Iq 1.6 µA). Budżet mocy węzła jest jednak zdominowany przez odbiornik GNSS, który w akwizycji/śledzeniu pobiera o rzędy wielkości więcej niż reszta układu — realny pobór zależy od trybu pracy L76-L (Full On / Periodic / AlwaysLocate™ / Standby; trybu Backup nie ma, bo zasilanie VCC modułu nie jest kluczowane) wybranego w firmware i zostanie zmierzony przy bring-upie wbudowanym INA186.
 - **CAN 2.0B (29-bit ID)** z wybudzaniem na aktywność magistrali, 125 kbit/s – 1 Mbit/s.
 - **Przełączalna terminacja CAN** — split 2×59 Ω + 4.7 nF załączany dwoma PhotoMOS-ami z GPIO (węzeł na końcu linii vs. w środku, bez zwór).
 - **Pomiar własnego poboru prądu** — INA186 A4 (G=200) + shunt 0.5 Ω, rozdzielczość ~2 µA/count; diagnostyka linii i weryfikacja budżetu mocy.
@@ -101,7 +101,7 @@ Wyrenderowane PDF-y: [schemat](prod/sch/gnss_node.pdf) · [PCB](prod/pcb/gnss_no
 | Blok | Element | Uwaga |
 |------|---------|-------|
 | GNSS | Quectel L76-L | LCC-18, UART NMEA 9600 8N1 (opcjonalnie I2C), VCC 2.8–4.3 V (typ. 3.3 V z istniejącej szyny), V_BCKP z istniejącego BT1 |
-| Antena | pasywna lub aktywna GNSS 1575 MHz, złącze U.FL (J3) | pasywna wystarcza przy odległości anteny od modułu < 1 m (nasz przypadek — insert w tej samej rurze); aktywna wymaga zasilania z pinu VCC_RF modułu (tor przełączany Q1). Wartości sieci dopasowania (C11/C12) dobierane przy uruchamianiu — domyślnie DNP |
+| Antena | pasywna lub aktywna GNSS 1575 MHz, złącze U.FL (J3) | pasywna wystarcza przy odległości anteny od modułu < 1 m (insert w tej samej rurze); aktywna wymaga zasilania z pinu VCC_RF modułu (tor przełączany Q1). Prototyp: pasywna antena ATIGG1540-1 na złączu IPX, bez strojenia — sieć dopasowania C11/C12 pozostaje DNP, a położenie anteny w insercie oceniane jest na podstawie C/N0 (`GET_SKY`) |
 | Buck | LT8606IDC#TRPBF | DFN-8, Iq 2.5 µA (zawsze Burst Mode), Vref FB 0.778 V |
 | LDO 3.3 V | MCP1700-3302E/MB | SOT-89, Iq 1.6 µA |
 | Current sense | INA186A4IDCKR + 0.5 Ω | 40 V CM, G=200, pin EN — pomiar poboru węzła |
@@ -117,17 +117,24 @@ Pełna lista: [prod/bom/](prod/bom/) (generowana z KiCad, nietrackowana w git) l
 
 ---
 
-## Ramki CAN — szkic protokołu v1
+## Protokół CAN
 
-Firmware jest na etapie szkieletu (peryferia zainicjalizowane, brak logiki aplikacji), więc poniższy format to **zamierzenie do implementacji**, nie działający kod. Trzy ramki standardowe (8 B danych), wysyłane cyklicznie po uzyskaniu fixa:
+Węzeł jest zgodny z profilem 2 standardu [CanBusCommon](https://github.com/bartkepl/CanBusCommon) (rewizja 2.1), wpiętego jako podmoduł `common/`. Warstwę specyficzną opisuje [protocol/device.yaml](protocol/device.yaml) — jedyne źródło prawdy, z którego generowany jest kod protokołu:
 
-| Ramka | Zawartość (bajty) |
-|-------|--------------------|
-| `POSITION` | szerokość geogr. (int32, 1e-7°) · długość geogr. (int32, 1e-7°) |
-| `ALT_SPEED` | wysokość n.p.m. (int32, mm) · prędkość (uint16, 0.01 m/s) · kurs (uint16, 0.01°) |
-| `STATUS_TIME` | czas UTC (uint32, epoch) · jakość fixa (uint8) · liczba satelitów (uint8) · HDOP (uint16, 0.01) |
+| Element | Wartość |
+|---|---|
+| `DEVICE_TYPE` | `0x0003`, adresy `0x20`–`0x2F` (domyślny i bootloadera `0x20`) |
+| Telemetria | pozycja, wysokość nad elipsoidą, prędkość, kurs, satelity, HDOP, typ rozwiązania (0x50–0x57) — jedną serią z jednej migawki rozwiązania; pochylenie, przechylenie, kurs magnetyczny, stan ruchu (0x66–0x69); napięcie i prąd zasilania; temperatura MCU, VDDA |
+| Komendy własne | `READ_FIX` (spójna migawka), `GET_GNSS_TIME`, `GET_SKY`, `GNSS_RESTART`, `MAG_CAL` |
+| Zdarzenia własne | `FIX_ACQUIRED`, `FIX_LOST`, `SITUATION_CHANGED`, `SHOCK`, `FREEFALL`, `TILT_ALARM` |
+| Czas | wzorzec czasu magistrali (`TIME_SOURCE`): `SET_TIME_SYNC` z czasem UTC tuż po impulsie PPS |
 
-Identyfikatory CAN, dokładna semantyka pól i częstotliwość nadawania do ustalenia razem z resztą firmware (Faza 4 poniżej).
+```bash
+git submodule update --init --recursive
+python common/protocol/generate.py protocol/device.yaml          # generacja kodu
+python common/protocol/generate.py --check protocol/device.yaml  # czy aktualny
+python common/tools/validate_ecosystem.py protocol/device.yaml   # zgodność
+```
 
 ---
 
@@ -139,7 +146,14 @@ Identyfikatory CAN, dokładna semantyka pól i częstotliwość nadawania do ust
 
 ## Firmware
 
-Projekt STM32CubeIDE w [firmware/CanGnssNode/](firmware/CanGnssNode/) — na razie szkielet wygenerowany z CubeMX ([CanGnssNode.ioc](firmware/CanGnssNode/CanGnssNode.ioc)) z inicjalizacją ADC1, CAN1, I2C1 i USART2 (GNSS). Logika aplikacji (parsowanie NMEA, obsługa IMU, budowa i nadawanie ramek CAN) do napisania.
+Dwa projekty STM32CubeIDE:
+
+| Projekt | Zawartość |
+|---|---|
+| [firmware/CanGnssNode/](firmware/CanGnssNode/) | aplikacja, linkowana od `0x08004000`; CAN1 z TTCM, TIM2 (przechwytywanie PPS), USART2 z DMA (L76-L), I2C1 z DMA (MCP79410, FXOS8700CQ), ADC1 z DMA |
+| [firmware/CanGnssNode_BL/](firmware/CanGnssNode_BL/) | bootloader CAN (16 KB) ze wspólnych źródeł `common/bootloader`; jedyny plik lokalny to `bl_board.h` |
+
+Plan, etapy i konfiguracja CubeMX: [docs/PLAN.md](docs/PLAN.md). Decyzje projektowe: [docs/adr/](docs/adr/README.md). Obraz do wgrania powstaje w STM32CubeIDE (konfiguracja Release).
 
 ---
 
@@ -148,8 +162,9 @@ Projekt STM32CubeIDE w [firmware/CanGnssNode/](firmware/CanGnssNode/) — na raz
 - [x] **Faza 1** — wydzielenie nowego sub-projektu, dobór modułu GNSS (Quectel L76-L), dokumentacja zamierzenia
 - [x] **Faza 2** — przebudowa schematu w KiCad: nowe arkusze GPS i IMU, usunięcie arkusza HV, aktualizacja pinów MCU
 - [x] **Faza 3** — przebudowa PCB (4 warstwy, montaż dwustronny, sekcja RF), pliki produkcyjne wygenerowane
-- [ ] **Faza 3b** — zamówienie PCB, montaż, bring-up sprzętowy
-- [ ] **Faza 4** — firmware (parser NMEA, protokół CAN z pozycją, synchronizacja RTC z czasem GNSS, tryby oszczędzania energii L76-L)
+- [x] **Faza 3b** — zamówienie PCB (stan sprzętu: tag `hw-v1.0`)
+- [ ] **Faza 3c** — montaż, bring-up sprzętowy (etap E1 planu firmware)
+- [ ] **Faza 4** — firmware według [docs/PLAN.md](docs/PLAN.md): etapy E0–E8 (w toku: E0)
 - [ ] **Faza 5** — testy terenowe (dokładność pozycji, TTFF, zasięg anteny w obudowie), testy EMC
 - [ ] **Faza 6** — mechanika: rura Al 32×1 mm, plastikowy insert z anteną, testy IP67
 
@@ -163,7 +178,11 @@ Projekt STM32CubeIDE w [firmware/CanGnssNode/](firmware/CanGnssNode/) — na raz
 ├── pcb/            # projekt KiCad 10 (schemat hierarchiczny, PCB, biblioteki lokalne, modele 3D)
 ├── prod/           # pliki produkcyjne: gerbery (.zip), PDF schematu i PCB, interaktywny BOM
 ├── sim/            # symulacje LTspice (LT8606 buck)
-└── firmware/       # projekt STM32CubeIDE (STM32L432, szkielet bring-up)
+├── common/         # podmoduł CanBusCommon — wspólna baza protokołu i bootloadera
+├── protocol/       # device.yaml — warstwa specyficzna protokołu
+├── firmware/       # projekty STM32CubeIDE: aplikacja i bootloader
+├── tools/          # kod protokołu dla narzędzi hosta (generowany)
+└── docs/           # plan oprogramowania, ADR, wymagania wzorca czasu
 ```
 
 Pliki produkcyjne generowane są jobsetami KiCad: [gen_prod.kicad_jobset](pcb/gen_prod.kicad_jobset) (PDF + BOM), [gen_gerber.kicad_jobset](pcb/gen_gerber.kicad_jobset) (gerbery + wiertła), [gen_media.kicad_jobset](pcb/gen_media.kicad_jobset) (rendery 3D).

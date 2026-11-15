@@ -293,7 +293,7 @@ device_params:
       desc: "Offset hard-iron magnetometru, os Z wezla." }
   - { id: 0x33, name: CAL_MOUNT_ORIENT, type: u8, access: rw, storage: nv, min: 0, max: 23, default: 0, unit: "-", calibration: true,
       desc: "Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st
-             przeksztalcajacy osie czujnika na osie wezla (tablica w ADR 0004)." }
+             przeksztalcajacy osie czujnika na osie wezla (definicja w ADR 0004)." }
   - { id: 0x34, name: CAL_VIN_C0, type: f32, access: rw, storage: nv, min: -1.0, max: 1.0, default: 0.0, unit: "V", calibration: true,
       desc: "Napiecie zasilania: offset c0 (V = c1 * V_nom + c0)." }
   - { id: 0x35, name: CAL_VIN_C1, type: f32, access: rw, storage: nv, min: 0.5, max: 1.5, default: 1.0, unit: "-", calibration: true,
