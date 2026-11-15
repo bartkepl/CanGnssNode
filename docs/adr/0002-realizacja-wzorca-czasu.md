@@ -65,3 +65,8 @@ z MSI 4 MHz w trybie PLL względem LSE (bypass z wyjścia MFP układu MCP79410).
   źródło, co jest zachowaniem zgodnym ze standardem.
 - Wynik pomiaru poziomu 2 przekazywany jest do CanBusCommon jako
   uzupełnienie ADR 0007.
+- Automatyczna retransmisja (ADR 0008 CanBusCommon) nie przesuwa punktu
+  odniesienia poziomu 2: `TDTxR.TIME` dotyczy startu ramki udanej. Ramka
+  poziomu 1 ponowiona po przegranym arbitrażu dociera później o czas
+  ramki zwycięskiej, co mieści się w dokładności milisekundowej; `MS`
+  liczony jest do chwili zlecenia nadania.

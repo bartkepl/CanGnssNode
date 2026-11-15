@@ -20,6 +20,8 @@ wersji:
   sprawdzana walidatorem ekosystemu;
 - wspólny bootloader CAN w wersji wire 1.1, wyłącznie z transportem CAN
   (ADR 0006 CanBusCommon);
+- automatyczna retransmisja sprzętowa CAN w aplikacji i w bootloaderze
+  (ADR 0008 CanBusCommon);
 - **wzorzec czasu magistrali** (`TIME_SOURCE`, ADR 0007 CanBusCommon):
   czas UTC z GNSS zdyscyplinowany impulsem PPS;
 - baza firmware wspólna z węzłem CanGeigerProbe i oparta na sprawdzonym
@@ -51,6 +53,7 @@ Numery z rejestrów wspólnych:
 | IMU służy do wykrywania sytuacji, jako kompas i do zdarzeń nagłych | Funkcje sprzętowe FXOS8700CQ (transient, freefall) na przerwaniu, niezależnie od GNSS |
 | Antena pasywna ATIGG1540-1 na IPX, bez strojenia | Sieć dopasowania C11/C12 pozostaje DNP; C/N0 z `GET_SKY` służy ocenie położenia anteny w insercie |
 | Magistrala 500 kbit/s | Jak pozostałe węzły |
+| Retransmisja sprzętowa CAN obowiązkowa (ADR 0008 CanBusCommon) | `AutoRetransmission = ENABLE` w obu projektach; bootloader wymusza `NART = 0` sam. Ramka bez potwierdzenia (węzeł sam na magistrali) czeka w skrzynce do skutku — `wsc_can_send_wait()` po swoim limicie porzuca ramkę z `TX_DROPPED`, odświeżając watchdog |
 | Jeden egzemplarz | Ewidencja przy odbiorze |
 
 ## 3. Mapa sprzętowa MCU
@@ -143,7 +146,7 @@ resecie zapewniają rezystory na płytce.
 |---|---|---|
 | **E0** Specyfikacja | podmoduł `common/`; `device.yaml`, generacja i walidacja; projekty CubeIDE aplikacji i bootloadera; ten plan i ADR-y; parser NMEA z testami uruchamianymi na PC | walidator bez błędów, `generate.py --check` aktualne, testy parsera zaliczone |
 | **E1** Uruchomienie sprzętu | jak w planie bazy, a ponadto: komunikacja z L76-L, PPS, `WHO_AM_I` FXOS8700CQ, zasilanie wsteczne IMU z linii I2C przy `IMU_EN` = 0, przyporządkowanie zdania NMEA do zbocza PPS | ramki na magistrali, aplikacja wgrana przez bootloader CAN |
-| **E2** Warstwa wspólna | moduły bazy | `canconf` poziom `full`: 0 FAIL; obraz `app-v0.1` w `releases/` |
+| **E2** Warstwa wspólna | moduły bazy; `TX_FRAMES` liczone przy zakończeniu nadania z `TXOK = 1`, a nie przy zleceniu (ADR 0008 CanBusCommon, pkt 4) | `canconf` poziom `full`: 0 FAIL; obraz `app-v0.1` w `releases/` |
 | **E3** GNSS | konfiguracja PMTK, telemetria nawigacyjna, `READ_FIX`, `GET_SKY`, zdarzenia rozwiązania, `SENSOR_FAULT` przy braku NMEA, pomiar TTFF | rozwiązanie w obudowie z insertem; CanSensorLoggerPi rejestruje bez zmian w rejestratorze |
 | **E4** Wzorzec czasu, poziom 1 | podstawa czasu TIM2, dyscyplina RTC, `SET_TIME_SYNC`, holdover, wybór źródła, status | `canconf`: SYN-001, SYN-002, SYN-004, SYN-005, CMD-010, CMD-016 PASS; MPSWP i MPCC zgodne z czasem hosta do 1 s |
 | **E4b** Wzorzec czasu, poziom 2 | TTCM, `TIME_SYNC` + `TIME_FOLLOW_UP`, pomiar analizatorem | odchyłka odbiorcy od PPS ≤ 50 µs (p99) |
@@ -162,7 +165,7 @@ z `MANIFEST.txt`, według zasad wspólnych dla rodziny węzłów.
 | Blok | Ustawienie |
 |---|---|
 | RCC | MSI 4 MHz (Range 6), AHB/APB /1; Voltage Scale 2; LSE, HSI, PLL wyłączone (LSE bypass i tryb PLL MSI włącza kod) |
-| CAN1 | Prescaler 1, BS1 6 TQ, BS2 1 TQ, SJW 1 → 500 kbit/s, 87,5 %; Transmit FIFO Priority, Time Triggered Mode, Automatic Retransmission: ENABLE; Automatic Bus-Off: DISABLE |
+| CAN1 | Prescaler 1, BS1 6 TQ, BS2 1 TQ, SJW 1 → 500 kbit/s, 87,5 %; Transmit FIFO Priority, Time Triggered Mode, Automatic Retransmission: ENABLE (wymaganie ADR 0008); Automatic Bus-Off: DISABLE |
 | TIM2 | wewnętrzny, prescaler 0, okres 0xFFFFFFFF; CH2 input capture, zbocze narastające, filtr 4 |
 | USART2 | 9600 8N1, overrun wyłączony; RX DMA1 Ch6 circular, TX DMA1 Ch7 normal |
 | I2C1 | 100 kHz (Timing 0x00100D14); RX DMA2 Ch6, TX DMA2 Ch7 |
@@ -178,7 +181,7 @@ Poza CubeMX: linker `FLASH ORIGIN 0x08004000, LENGTH 0x3B800`, sekcja
 | Blok | Ustawienie |
 |---|---|
 | RCC | MSI 4 MHz |
-| CAN1 | jak w aplikacji, Time Triggered Mode: DISABLE; bez NVIC (odpytywanie FIFO) |
+| CAN1 | jak w aplikacji, Time Triggered Mode: DISABLE; bez NVIC (odpytywanie FIFO). Retransmisję wymusza też `bl_can_setup()` wspólnych źródeł, niezależnie od `.ioc` |
 | GPIO | PA9 `CAN_S`, PA10 `CAN_R_CTRL` — wyjścia Low bez podciągnięć |
 | Pozostałe | bez USART, ADC, TIM; PA5 i PB4 w stanie po resecie |
 
@@ -197,5 +200,3 @@ Poza CubeMX: folder połączony `Core/Common` → `common/bootloader`,
 - **Zakres INA186** — przy wejściu 7 V i pełnym poborze odbiornika tor
   prądu zbliża się do nasycenia (ok. 30 mA); sprawdzenie w E1.
 - **Podciągnięcie R18** wyjścia MFP — jak w planie bazy.
-- **Automatyczna retransmisja CAN** — węzeł pracuje z włączoną; MPSWP i MPCC
-  z wyłączoną. Ujednolicenie należy do decyzji na poziomie rodziny węzłów.

@@ -14,5 +14,6 @@ warianty, Decyzja, Konsekwencje.
 | [0004](0004-imu-przerwania-i-zasilanie.md) | IMU: przerwania, zasilanie, orientacja montażu | przyjęta, rola klucza do potwierdzenia pomiarem |
 
 Decyzje warstwy wspólnej, z których węzeł korzysta wprost:
-ADR 0006 CanBusCommon (bootloader wyłącznie CAN) i ADR 0007 CanBusCommon
-(wspólna oś czasu i węzeł wzorcowy czasu).
+ADR 0006 CanBusCommon (bootloader wyłącznie CAN), ADR 0007 CanBusCommon
+(wspólna oś czasu i węzeł wzorcowy czasu) i ADR 0008 CanBusCommon
+(automatyczna retransmisja CAN obowiązkowa).
