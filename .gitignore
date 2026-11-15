@@ -48,3 +48,36 @@ plan/
 
 # Loose gerbers - only the zipped set in prod/*.zip is tracked
 prod/gerbers/
+
+# -----------------------------------------------------------------------------
+# STM32CubeIDE / firmware — kompilaty i pliki uzytkownika IDE
+# .project / .cproject / .mxproject / .settings/ sa wersjonowane (konfiguracja
+# projektu potrzebna do otwarcia w CubeIDE). Obrazy wgrane na sprzet trafiaja
+# do releases/ (wersjonowane wbrew regulom ponizej — patrz releases/README.md).
+# -----------------------------------------------------------------------------
+firmware/**/Debug/
+firmware/**/Release/
+*.elf
+*.list
+*.map
+*.o
+*.d
+*.su
+*.cyclo
+*.bin
+*.hex
+!releases/
+!releases/**
+# Raporty badania zgodnosci (canconf): przebieg na konkretnym egzemplarzu,
+# pelny zapis ramek — lokalnie, poza repozytorium.
+releases/raport-*/
+.metadata/
+RemoteSystemsTempFiles/
+*.launch.local
+
+# Python
+__pycache__/
+*.pyc
+
+# Testy hosta (kompilaty)
+tests/build/

@@ -1,0 +1,304 @@
+# =============================================================================
+#  CanGnssNode — warstwa DEVICE SPECIFIC protokolu
+# =============================================================================
+#  Warstwa wspolna (uniwersalna + powszechnej praktyki, rejestry) pochodzi z
+#  podmodulu common/ — repozytorium CanBusCommon. Ten plik doklada WYLACZNIE to,
+#  co specyficzne dla wezla nawigacyjnego.
+#
+#  Generacja:  python common/protocol/generate.py protocol/device.yaml
+#  Walidacja:  python common/tools/validate_ecosystem.py protocol/device.yaml
+#
+#  NIE definiuj tutaj niczego, co jest w warstwie wspolnej. Walidator odrzuci
+#  kazda kolizje numeracji.
+# =============================================================================
+
+extends: ../common/protocol/common.yaml
+
+device:
+  name: CanGnssNode
+  device_type: 0x0003
+  display_name: "Wezel nawigacyjny GNSS"
+  mcu: STM32L432KCU6
+  node_default: 0x20
+  # Adres wkompilowany w obraz bootloadera — niezalezny od NODE_ID aplikacji.
+  bootloader_node: 0x20
+  enter_bootloader_opcode: 0x0D
+
+  # Zdolnosci zglaszane w CAPABILITIES. Zbior musi odpowiadac implementacji
+  # (ADR 0001 CanBusCommon) — deklaracja ponad stan jest gorsza od pominiecia.
+  #  TIME_SOURCE: wzorzec czasu magistrali (ADR 0007 CanBusCommon).
+  #  TIME_SYNC:   bez wlasnego wzorca wezel przyjmuje czas od innego zrodla.
+  #  TIME_SYNC_PRECISE nie jest deklarowane: dotyczy odbiorcy poziomu 2.
+  capabilities:
+    - TELEMETRY
+    - SENSORS
+    - PARAMS_NV
+    - RTC
+    - BOOTLOADER
+    - TIME_SYNC
+    - LIST_PARAMS
+    - LIST_CHANNELS
+    - COUNTERS
+    - SELF_TEST
+    - CAL_LOCK
+    - ADDR_CONFLICT_DETECT
+    - STATUS_EXT
+    - GNSS
+    - TIME_SOURCE
+
+  # Parametry warstwy uniwersalnej dotyczace tego wezla. NODE_ID
+  # i TELEMETRY_PERIOD sa obowiazkowe i dokladane automatycznie.
+  # TIME_SYNC_PERIOD i TIME_HOLDOVER sa obowiazkowe przy TIME_SOURCE.
+  universal_params_implemented:
+    - MEASURE_PERIOD
+    - CAN_TERMINATION
+    - LOW_POWER
+    - CAL_LOCK
+    - HEARTBEAT_PERIOD
+    - TIME_SYNC_PERIOD
+    - TIME_HOLDOVER
+
+# Zawezenia parametrow uniwersalnych — wylacznie zawezenie, nigdy poszerzenie.
+universal_param_overrides:
+  NODE_ID:
+    default: 32      # 0x20 — zakres CanGnssNode to 0x20..0x2F
+    min: 32
+    max: 47
+
+# Sciezki wyjsciowe generatora (wzgledem korzenia tego repozytorium).
+outputs:
+  h:  firmware/CanGnssNode/Core/Inc/protocol_gen.h
+  c:  firmware/CanGnssNode/Core/Src/protocol_gen.c
+  py: tools/protocol_gen.py
+
+# Wersjonowanie — patrz CONFORMANCE.md w repozytorium wspolnym.
+#   fw_version_minor += 1   zmiana zgodna
+#   fw_version_major += 1   zmiana przelamujaca (minor = 0)
+#   build_revision   += 1   ZAWSZE, przy kazdej zmianie
+#   hw_version_*            TYLKO recznie, przy fizycznej zmianie plytki
+info:
+  fw_version_major: 0
+  fw_version_minor: 1
+  hw_version_major: 1
+  hw_version_minor: 0
+  build_revision: 1
+
+# -----------------------------------------------------------------------------
+# Czujniki — nazwy z registry/sensor_types.yaml.
+# LSM303AGR (0x22) jest wariantem montazu (pola na plytce, domyslnie DNP);
+# zostanie dopisany, gdy firmware otrzyma jego sterownik.
+# -----------------------------------------------------------------------------
+sensors:
+  - GNSS          # 0x20 — Quectel L76-L, NMEA po USART2
+  - FXOS8700CQ    # 0x21 — akcelerometr + magnetometr, I2C 0x1F
+  - ORIENTATION   # 0x23 — pochylenie, przechylenie, kurs, stan ruchu
+  - SUPPLY_MON    # 0x11 — VIN_SENSE + INA186
+  - MCU           # 0x0C — wewnetrzny ADC (temperatura zlacza, VDDA)
+
+# -----------------------------------------------------------------------------
+# Kanaly telemetrii — nazwy wielkosci z registry/quantities.yaml.
+# Kanaly nawigacyjne nadawane sa jedna seria z jednej migawki rozwiazania
+# (ADR 0001); bez waznego rozwiazania z flaga VALID = 0.
+# -----------------------------------------------------------------------------
+telemetry_channels:
+  - LATITUDE        # 0x50
+  - LONGITUDE       # 0x51
+  - ALTITUDE        # 0x52  nad elipsoida WGS84
+  - SPEED           # 0x53
+  - COURSE          # 0x54
+  - SATELLITES      # 0x55
+  - HDOP            # 0x56
+  - FIX_TYPE        # 0x57
+  - PITCH           # 0x66
+  - ROLL            # 0x67
+  - HEADING_MAG     # 0x68
+  - MOTION_STATE    # 0x69
+  - SUPPLY_VOLTAGE  # 0x12
+  - SUPPLY_CURRENT  # 0x13
+  - MCU_TEMP        # 0x0A
+  - VDDA            # 0x0B
+
+# Wielkosci dostepne przez READ_SENSOR poza kanalami telemetrii.
+quantities:
+  - ACCEL_X
+  - ACCEL_Y
+  - ACCEL_Z
+  - MAG_X
+  - MAG_Y
+  - MAG_Z
+
+# -----------------------------------------------------------------------------
+# Komendy DEVICE SPECIFIC (zakres 0x80..0xFF)
+# -----------------------------------------------------------------------------
+device_opcodes:
+  - { name: READ_FIX,      value: 0x80, arg: none, response: STREAM,
+      desc: "Spojna migawka ostatniego rozwiazania (ADR 0001), 32 B LE:
+             [0] UNIX u32 — czas UTC rozwiazania; [4] MS u16;
+             [6] LAT i32 1e-7 deg; [10] LON i32 1e-7 deg;
+             [14] ALT_ELL i32 0.01 m (nad elipsoida); [18] ALT_MSL i32 0.01 m
+             (nad geoida); [22] SPEED u16 0.01 m/s; [24] COURSE u16 0.01 deg;
+             [26] SATELLITES u8; [27] FIX_TYPE u8 (jak wielkosc FIX_TYPE);
+             [28] HDOP u16 0.01; [30] AGE_S u8 — wiek migawki, nasycany 255;
+             [31] FLAGS u8: bit0 VALID, bit1 AVERAGED (pozycja usredniona
+             w spoczynku), bit2 PPS (czas zdyscyplinowany impulsem).
+             Bez rozwiazania od startu: ERR_NOT_READY." }
+  - { name: GET_GNSS_TIME, value: 0x81, arg: none, response: RESPONSE,
+      desc: "Czas wzorcowy wezla, 7 B: UNIX u32, MS u16, QUALITY u8 (bity jak
+             w SET_TIME_SYNC: FIX, PPS, HOLDOVER). Zrodlo diagnostyczne dla
+             hosta; QUALITY = 0 oznacza brak wzorca." }
+  - { name: GET_SKY,       value: 0x82, arg: none, response: STREAM,
+      desc: "Stan odbioru, 8 B: SATS_IN_VIEW u8, SATS_USED u8, CN0_MAX u8
+             (dB-Hz), CN0_AVG u8 (dB-Hz, srednia satelitow uzytych), PDOP u16
+             0.01, VDOP u16 0.01. Sluzy ocenie anteny i jej polozenia." }
+  - { name: GNSS_RESTART,  value: 0x83, arg: none, response: RESPONSE,
+      guard: 0xC5,
+      desc: "Restart odbiornika. WYMAGA dane[0]=0xC5. dane[1]: 1 = hot,
+             2 = warm, 3 = cold, 4 = full cold (kasuje konfiguracje modulu).
+             Cold i full cold gubia efemerydy — TTFF rosnie do minut." }
+  - { name: MAG_CAL,       value: 0x84, arg: none, response: RESPONSE,
+      desc: "Kalibracja hard-iron magnetometru. dane[0]: 1 = start zbierania,
+             2 = zakonczenie i wyliczenie, 0 = przerwanie. Wynik trafia do
+             CAL_MAG_OFF_X/Y/Z wylacznie przy CAL_LOCK = 0 (inaczej
+             ERR_READONLY); zapis trwaly przez SAVE_CONFIG. RESPONSE po
+             zakonczeniu: offsety X, Y, Z jako i16 0.01 uT (6 B)." }
+
+# -----------------------------------------------------------------------------
+# Zdarzenia DEVICE SPECIFIC (zakres 0x80..0xFF)
+# -----------------------------------------------------------------------------
+device_events:
+  - { name: FIX_ACQUIRED,      value: 0x80,
+      desc: "Uzyskanie waznego rozwiazania po jego braku.
+             Uklad ladunku: device_event_payloads.FIX_ACQUIRED." }
+  - { name: FIX_LOST,          value: 0x81,
+      desc: "Utrata waznego rozwiazania (brak fixa albo przekroczone progi
+             GNSS_MIN_SATS / GNSS_MAX_HDOP)." }
+  - { name: SITUATION_CHANGED, value: 0x82,
+      desc: "Zmiana stanu ruchu wezla (wielkosc MOTION_STATE).
+             Uklad ladunku: device_event_payloads.SITUATION_CHANGED." }
+  - { name: SHOCK,             value: 0x83,
+      desc: "Wstrzas ponad prog IMU_SHOCK_MG (detekcja sprzetowa FXOS).
+             Uklad ladunku: device_event_payloads.SHOCK." }
+  - { name: FREEFALL,          value: 0x84,
+      desc: "Swobodny spadek (detekcja sprzetowa FXOS).
+             Uklad ladunku: device_event_payloads.FREEFALL." }
+  - { name: TILT_ALARM,        value: 0x85,
+      desc: "Przekroczenie progu pochylenia IMU_TILT_LIMIT i powrot ponizej
+             (zbocze). Uklad ladunku: device_event_payloads.TILT_ALARM." }
+
+device_event_payloads:
+  FIX_ACQUIRED:
+    - { name: FIX_TYPE,   offset: 0, ctype: u8,
+        desc: "Typ rozwiazania, kodowanie jak wielkosc FIX_TYPE (0x57)" }
+    - { name: SATELLITES, offset: 1, ctype: u8, desc: "Satelity uzyte w rozwiazaniu" }
+    - { name: TTFF_S,     offset: 2, ctype: u16,
+        desc: "Czas od startu albo od utraty rozwiazania, s (nasycany)" }
+  SITUATION_CHANGED:
+    - { name: OLD, offset: 0, ctype: u8, desc: "Poprzedni stan ruchu",
+        values: [ { name: UNKNOWN,  value: 0 },
+                  { name: STATIC,   value: 1, desc: "Spoczynek" },
+                  { name: HANDLING, value: 2, desc: "Przenoszenie" },
+                  { name: MOVING,   value: 3, desc: "Jazda" } ] }
+    - { name: NEW, offset: 1, ctype: u8, desc: "Nowy stan ruchu",
+        values: [ { name: UNKNOWN,  value: 0 },
+                  { name: STATIC,   value: 1, desc: "Spoczynek" },
+                  { name: HANDLING, value: 2, desc: "Przenoszenie" },
+                  { name: MOVING,   value: 3, desc: "Jazda" } ] }
+  SHOCK:
+    - { name: AXES,    offset: 0, ctype: u8, desc: "Osie wezla, w ktorych przekroczono prog",
+        bits: [ { name: X, bit: 0 }, { name: Y, bit: 1 }, { name: Z, bit: 2 } ] }
+    - { name: PEAK_MG, offset: 1, ctype: u16, desc: "Szczyt przyspieszenia, mg" }
+  FREEFALL:
+    - { name: DURATION_MS, offset: 0, ctype: u16, desc: "Czas trwania spadku, ms" }
+  TILT_ALARM:
+    - { name: STATE, offset: 0, ctype: u8, desc: "Kierunek zbocza",
+        values: [ { name: CLEARED,  value: 0, desc: "Powrot ponizej progu" },
+                  { name: EXCEEDED, value: 1, desc: "Przekroczenie progu" } ] }
+    - { name: PITCH, offset: 1, ctype: i16, desc: "Pochylenie, 0.01 deg" }
+    - { name: ROLL,  offset: 3, ctype: i16, desc: "Przechylenie, 0.01 deg" }
+
+device_events_without_payload:
+  - FIX_LOST
+
+# -----------------------------------------------------------------------------
+# Bity pol odeslanych przez warstwe wspolna
+# -----------------------------------------------------------------------------
+universal_event_field_bits:
+  BOOT.POST_MASK:
+    - { name: RAM,   bit: 0, desc: "Test marszowy RAM (SRAM2 w calosci + bufor w SRAM1)" }
+    - { name: FLASH, bit: 1, desc: "Suma CRC obszaru programu" }
+    - { name: CPU,   bit: 2, desc: "Sciezka ALU i rejestry" }
+    - { name: CLOCK, bit: 3, desc: "Taktowanie rdzenia poza oczekiwanym zakresem" }
+  SENSOR_IRQ.LINES:
+    - { name: IMU_INT, bit: 0,
+        desc: "Linia przerwania FXOS8700CQ (PB5). Zdarzenia ruchu nadawane sa
+               zdarzeniami wlasnymi; bit opisuje linie, gdy wezel zglasza
+               surowe przerwanie." }
+
+# -----------------------------------------------------------------------------
+# Parametry DEVICE SPECIFIC (zakres 0x10..0xFF)
+#   access: ro | rw ; storage: nv | ram
+#   calibration: true  => zapis blokowany przez uniwersalny CAL_LOCK
+# -----------------------------------------------------------------------------
+device_params:
+  # --- aktywnosc podsystemow ---
+  - { id: 0x10, name: EN_GNSS, type: u8, access: rw, storage: nv, min: 0, max: 1, default: 1, unit: "-",
+      desc: "Aktywacja odbiornika GNSS. 0 = modul w trybie Standby (PMTK161)." }
+  - { id: 0x11, name: EN_IMU,  type: u8, access: rw, storage: nv, min: 0, max: 1, default: 1, unit: "-",
+      desc: "Aktywacja czujnika FXOS8700CQ i wielkosci orientacji." }
+
+  # --- GNSS ---
+  - { id: 0x12, name: GNSS_CONSTELLATIONS, type: u8, access: rw, storage: nv, min: 1, max: 15, default: 7, unit: "mask",
+      desc: "Konstelacje (PMTK353): bit0 GPS, bit1 GLONASS, bit2 Galileo, bit3 QZSS." }
+  - { id: 0x13, name: GNSS_SBAS, type: u8, access: rw, storage: nv, min: 0, max: 1, default: 1, unit: "0/1",
+      desc: "Korekcje SBAS (EGNOS/WAAS/MSAS/GAGAN)." }
+  - { id: 0x14, name: GNSS_POWER_POLICY, type: u8, access: rw, storage: nv, min: 0, max: 3, default: 0, unit: "-",
+      desc: "Tryb pracy L76-L: 0 = automatycznie wg stanu ruchu (ADR 0003),
+             1 = stale wlaczony, 2 = okresowy (PMTK225), 3 = AlwaysLocate." }
+  - { id: 0x15, name: GNSS_MIN_SATS, type: u8, access: rw, storage: nv, min: 3, max: 12, default: 4, unit: "-",
+      desc: "Minimalna liczba satelitow dla rozwiazania waznego (VALID)." }
+  - { id: 0x16, name: GNSS_MAX_HDOP, type: u16, access: rw, storage: nv, min: 100, max: 5000, default: 500, unit: "0.01",
+      desc: "Maksymalne HDOP dla rozwiazania waznego (VALID); 500 = 5.0." }
+  - { id: 0x17, name: STATIC_AVERAGING, type: u8, access: rw, storage: nv, min: 0, max: 1, default: 1, unit: "0/1",
+      desc: "Usrednianie pozycji w stanie STATIC." }
+  - { id: 0x18, name: STATIC_AVG_WINDOW_S, type: u16, access: rw, storage: nv, min: 10, max: 3600, default: 300, unit: "s",
+      desc: "Okno usredniania pozycji w spoczynku." }
+
+  # --- wzorzec czasu ---
+  - { id: 0x19, name: PRECISE_SYNC_PERIOD, type: u16, access: rw, storage: nv, min: 0, max: 60000, default: 1000, unit: "ms",
+      desc: "Okres pary TIME_SYNC / TIME_FOLLOW_UP (poziom 2, provisional).
+             0 = poziom 2 wylaczony. Nadawane wylacznie przy jakosci PPS." }
+
+  # --- IMU i stan ruchu ---
+  - { id: 0x20, name: IMU_SHOCK_MG, type: u16, access: rw, storage: nv, min: 500, max: 7900, default: 2500, unit: "mg",
+      desc: "Prog zdarzenia SHOCK (zakres FXOS +-8 g)." }
+  - { id: 0x21, name: IMU_TILT_LIMIT, type: u16, access: rw, storage: nv, min: 100, max: 9000, default: 3000, unit: "0.01 deg",
+      desc: "Prog zdarzenia TILT_ALARM (pochylenie lub przechylenie)." }
+  - { id: 0x22, name: IMU_STATIC_MG, type: u16, access: rw, storage: nv, min: 5, max: 500, default: 30, unit: "mg",
+      desc: "Prog odchylenia przyspieszenia, ponizej ktorego wezel uznaje spoczynek." }
+  - { id: 0x23, name: IMU_STATIC_S, type: u16, access: rw, storage: nv, min: 5, max: 600, default: 30, unit: "s",
+      desc: "Czas spelnienia warunku spoczynku przed przejsciem w STATIC." }
+  - { id: 0x24, name: MOVING_SPEED, type: u16, access: rw, storage: nv, min: 50, max: 3000, default: 300, unit: "cm/s",
+      desc: "Predkosc GNSS, powyzej ktorej stan ruchu to MOVING (jazda)." }
+  - { id: 0x25, name: MAG_DECLINATION, type: i16, access: rw, storage: nv, min: -3000, max: 3000, default: 0, unit: "0.01 deg",
+      desc: "Deklinacja magnetyczna miejsca instalacji (dodatnia = wschodnia).
+             Kurs geograficzny = HEADING_MAG + deklinacja; wielkosc HEADING_MAG
+             pozostaje kursem magnetycznym." }
+
+  # --- kalibracja (CAL_LOCK) ---
+  - { id: 0x30, name: CAL_MAG_OFF_X, type: f32, access: rw, storage: nv, min: -500.0, max: 500.0, default: 0.0, unit: "uT", calibration: true,
+      desc: "Offset hard-iron magnetometru, os X wezla." }
+  - { id: 0x31, name: CAL_MAG_OFF_Y, type: f32, access: rw, storage: nv, min: -500.0, max: 500.0, default: 0.0, unit: "uT", calibration: true,
+      desc: "Offset hard-iron magnetometru, os Y wezla." }
+  - { id: 0x32, name: CAL_MAG_OFF_Z, type: f32, access: rw, storage: nv, min: -500.0, max: 500.0, default: 0.0, unit: "uT", calibration: true,
+      desc: "Offset hard-iron magnetometru, os Z wezla." }
+  - { id: 0x33, name: CAL_MOUNT_ORIENT, type: u8, access: rw, storage: nv, min: 0, max: 23, default: 0, unit: "-", calibration: true,
+      desc: "Orientacja montazu: jeden z 24 obrotow o wielokrotnosc 90 st
+             przeksztalcajacy osie czujnika na osie wezla (tablica w ADR 0004)." }
+  - { id: 0x34, name: CAL_VIN_C0, type: f32, access: rw, storage: nv, min: -1.0, max: 1.0, default: 0.0, unit: "V", calibration: true,
+      desc: "Napiecie zasilania: offset c0 (V = c1 * V_nom + c0)." }
+  - { id: 0x35, name: CAL_VIN_C1, type: f32, access: rw, storage: nv, min: 0.5, max: 1.5, default: 1.0, unit: "-", calibration: true,
+      desc: "Napiecie zasilania: wzmocnienie c1 wzgledem nominalnego dzielnika 1M/100k." }
+  - { id: 0x36, name: CAL_ISENS_C0, type: f32, access: rw, storage: nv, min: -0.001, max: 0.001, default: 0.0, unit: "A", calibration: true,
+      desc: "Prad zasilania: offset c0 (I = c1 * I_nom + c0)." }
+  - { id: 0x37, name: CAL_ISENS_C1, type: f32, access: rw, storage: nv, min: 0.5, max: 1.5, default: 1.0, unit: "-", calibration: true,
+      desc: "Prad zasilania: wzmocnienie c1 wzgledem nominalnego INA186A4 (G = 200, shunt 0.5 Ohm)." }
