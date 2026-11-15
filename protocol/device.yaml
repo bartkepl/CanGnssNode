@@ -148,7 +148,7 @@ device_opcodes:
              hosta; QUALITY = 0 oznacza brak wzorca." }
   - { name: GET_SKY,       value: 0x82, arg: none, response: STREAM,
       desc: "Stan odbioru, 8 B: SATS_IN_VIEW u8, SATS_USED u8, CN0_MAX u8
-             (dB-Hz), CN0_AVG u8 (dB-Hz, srednia satelitow uzytych), PDOP u16
+             (dB-Hz), CN0_AVG u8 (dB-Hz, srednia satelitow sledzonych, SNR > 0), PDOP u16
              0.01, VDOP u16 0.01. Sluzy ocenie anteny i jej polozenia." }
   - { name: GNSS_RESTART,  value: 0x83, arg: none, response: RESPONSE,
       guard: 0xC5,
